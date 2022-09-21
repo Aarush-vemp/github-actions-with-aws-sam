@@ -14,7 +14,8 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version : ${{matrix.node-version}}
-      - run: cd ./directory && npm install
+      - name: install serverless
+      - run: npm install -g serverless
       # - name: Configure AWS Credentials
       #   uses: aws-actions/configure-aws-credentials@v1
       #   with: 
@@ -24,8 +25,8 @@ jobs:
       - name: serverless deploy
         uses: serverless/github-action@master
         with: 
-          args: -c "cd ./directory && serverless deploy"
+          args: -c "serverless deploy"
           entryPoint: /bin/sh
         env: 
-          AWS_ACCESS_KEY_ID: AKIA36UHBMUYQLCBWDAH
-          AWS_SECRET_ACCCESS_KEY: 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
+          AWS_ACCESS_KEY_ID: AKIA36UHBMUYSYV537U6
+          AWS_SECRET_ACCCESS_KEY: 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

@@ -1,15 +1,9 @@
-service: aws-node-http-api-project
+service: functionThree
 frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: nodejs12.x
-  stage: dev
-  region: us-east-1
-  timeout: 30
-  memorySize: 2048
-plugins:
- - serverless-offline
+  runtime: nodejs14.x
 functions:
   hello:
     handler: handler.hello

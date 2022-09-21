@@ -5,7 +5,7 @@ module.exports.hello = async (event) => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: "this is with github actions",
+        message: "configured new keys for user_two",
         input: event,
       },
       null,

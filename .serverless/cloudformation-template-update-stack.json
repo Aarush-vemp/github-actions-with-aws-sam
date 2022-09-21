@@ -74,7 +74,7 @@
     "HelloLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/aws-node-http-api-project-dev-hello"
+        "LogGroupName": "/aws/lambda/functionThree-dev-hello"
       }
     },
     "IamRoleLambdaExecution": {
@@ -102,7 +102,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "aws-node-http-api-project",
+                  "functionThree",
                   "dev",
                   "lambda"
                 ]
@@ -119,7 +119,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/aws-node-http-api-project-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/functionThree-dev*:*"
                     }
                   ]
                 },
@@ -130,7 +130,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/aws-node-http-api-project-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/functionThree-dev*:*:*"
                     }
                   ]
                 }
@@ -143,7 +143,7 @@
           "Fn::Join": [
             "-",
             [
-              "aws-node-http-api-project",
+              "functionThree",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -161,11 +161,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/aws-node-http-api-project/dev/1663772729759-2022-09-21T15:05:29.759Z/aws-node-http-api-project.zip"
+          "S3Key": "serverless/functionThree/dev/1663792784389-2022-09-21T20:39:44.389Z/functionThree.zip"
         },
         "Handler": "handler.hello",
         "Runtime": "nodejs14.x",
-        "FunctionName": "aws-node-http-api-project-dev-hello",
+        "FunctionName": "functionThree-dev-hello",
         "MemorySize": 1024,
         "Timeout": 6,
         "Role": {
@@ -179,20 +179,20 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersionrl4OuW95l0wzzudANAHkEP7yJtdhZcUMVCgLYLmqu1Q": {
+    "HelloLambdaVersionxDmWZNclJxuPhQJ2iGznBOBLYHQkZOuvwcuXR9gNnmg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "6hDNqZJlPIVJ/ZjaGj+w4MpFmiEaYxLuUZtY5fvSHj4="
+        "CodeSha256": "LoWi2/fxdBPxRZTIOGGYzQ60fldm2hZZPA5Pd54M1uY="
       }
     },
     "HttpApi": {
       "Type": "AWS::ApiGatewayV2::Api",
       "Properties": {
-        "Name": "dev-aws-node-http-api-project",
+        "Name": "dev-functionThree",
         "ProtocolType": "HTTP"
       }
     },
@@ -290,16 +290,16 @@
         "Ref": "ServerlessDeploymentBucket"
       },
       "Export": {
-        "Name": "sls-aws-node-http-api-project-dev-ServerlessDeploymentBucketName"
+        "Name": "sls-functionThree-dev-ServerlessDeploymentBucketName"
       }
     },
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionrl4OuW95l0wzzudANAHkEP7yJtdhZcUMVCgLYLmqu1Q"
+        "Ref": "HelloLambdaVersionxDmWZNclJxuPhQJ2iGznBOBLYHQkZOuvwcuXR9gNnmg"
       },
       "Export": {
-        "Name": "sls-aws-node-http-api-project-dev-HelloLambdaFunctionQualifiedArn"
+        "Name": "sls-functionThree-dev-HelloLambdaFunctionQualifiedArn"
       }
     },
     "HttpApiId": {
@@ -308,7 +308,7 @@
         "Ref": "HttpApi"
       },
       "Export": {
-        "Name": "sls-aws-node-http-api-project-dev-HttpApiId"
+        "Name": "sls-functionThree-dev-HttpApiId"
       }
     },
     "HttpApiUrl": {
@@ -333,7 +333,7 @@
         ]
       },
       "Export": {
-        "Name": "sls-aws-node-http-api-project-dev-HttpApiUrl"
+        "Name": "sls-functionThree-dev-HttpApiUrl"
       }
     }
   }
