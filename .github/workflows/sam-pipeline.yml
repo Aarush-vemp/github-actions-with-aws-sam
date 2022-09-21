@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy: 
       matrix: 
-        node-version: [14.x]
+        node-version: [12.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{matrix.node-version}}
@@ -15,17 +15,17 @@ jobs:
         with: 
           node-version : ${{matrix.node-version}}
       - run: cd ./directory && npm install
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with: 
-          aws-access-key-id: AKIA36UHBMUYRN3RQXPG
-          aws-secret-access-key: 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
-          aws-region: us-east-1
+      # - name: Configure AWS Credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with: 
+      #     aws-access-key-id: AKIA36UHBMUYRN3RQXPG
+      #     aws-secret-access-key: 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
+      #     aws-region: us-east-1
       - name: serverless deploy
         uses: serverless/github-action@master
         with: 
           args: -c "cd ./directory && serverless deploy"
           entryPoint: /bin/sh
         env: 
-          AWS_ACCESS_KEY_ID: AKIA36UHBMUYRN3RQXPG
-          AWS_SECRET_ACCCESS_KEY: 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
+          AWS_ACCESS_KEY_ID: AKIA36UHBMUYQLCBWDAH
+          AWS_SECRET_ACCCESS_KEY: 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
