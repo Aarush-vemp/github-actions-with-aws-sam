@@ -19,5 +19,5 @@ jobs:
         with: 
           args: deploy
         env: 
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_ACCESS_KEY_ID: AKIA36UHBMUYRN3RQXPG
+          AWS_SECRET_ACCCESS_KEY: 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
