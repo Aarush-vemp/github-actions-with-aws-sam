@@ -1,8 +1,8 @@
 {
   "service": {
-    "service": "functionThree",
+    "service": "functionFour",
     "serviceObject": {
-      "name": "functionThree"
+      "name": "functionFour"
     },
     "provider": {
       "name": "aws",
@@ -86,7 +86,7 @@
           "HelloLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/functionThree-dev-hello"
+              "LogGroupName": "/aws/lambda/functionFour-dev-hello"
             }
           },
           "IamRoleLambdaExecution": {
@@ -114,7 +114,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "functionThree",
+                        "functionFour",
                         "dev",
                         "lambda"
                       ]
@@ -131,7 +131,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/functionThree-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/functionFour-dev*:*"
                           }
                         ]
                       },
@@ -142,7 +142,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/functionThree-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/functionFour-dev*:*:*"
                           }
                         ]
                       }
@@ -155,7 +155,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "functionThree",
+                    "functionFour",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -173,11 +173,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/functionThree/dev/1663828004756-2022-09-22T06:26:44.756Z/functionThree.zip"
+                "S3Key": "serverless/functionFour/dev/1663833089310-2022-09-22T07:51:29.310Z/functionFour.zip"
               },
               "Handler": "handler.hello",
               "Runtime": "nodejs14.x",
-              "FunctionName": "functionThree-dev-hello",
+              "FunctionName": "functionFour-dev-hello",
               "MemorySize": 1024,
               "Timeout": 6,
               "Role": {
@@ -191,20 +191,20 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionMPp6FmgZz7YJ6dkvX8m0wreSPXJviaZe5kV018a9WQ": {
+          "HelloLambdaVersioniFnI8KQjQixohYAUuqZ43yv1S57dd4xRT0Csao3d8w": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "sl6xMf6HPwb3nSwS5vo/gy/Fn8u+A1K5GXK/QNiFeSk="
+              "CodeSha256": "xQM/r6MyhxR4ENPT7sXK25VKxvuoosQS+U5e1SZO7ls="
             }
           },
           "HttpApi": {
             "Type": "AWS::ApiGatewayV2::Api",
             "Properties": {
-              "Name": "dev-functionThree",
+              "Name": "dev-functionFour",
               "ProtocolType": "HTTP"
             }
           },
@@ -299,16 +299,16 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-functionThree-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-functionFour-dev-ServerlessDeploymentBucketName"
             }
           },
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionMPp6FmgZz7YJ6dkvX8m0wreSPXJviaZe5kV018a9WQ"
+              "Ref": "HelloLambdaVersioniFnI8KQjQixohYAUuqZ43yv1S57dd4xRT0Csao3d8w"
             },
             "Export": {
-              "Name": "sls-functionThree-dev-HelloLambdaFunctionQualifiedArn"
+              "Name": "sls-functionFour-dev-HelloLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -317,7 +317,7 @@
               "Ref": "HttpApi"
             },
             "Export": {
-              "Name": "sls-functionThree-dev-HttpApiId"
+              "Name": "sls-functionFour-dev-HttpApiId"
             }
           },
           "HttpApiUrl": {
@@ -342,7 +342,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-functionThree-dev-HttpApiUrl"
+              "Name": "sls-functionFour-dev-HttpApiUrl"
             }
           }
         }
@@ -445,19 +445,19 @@
             "resolvedPath": "/"
           }
         ],
-        "name": "functionThree-dev-hello",
+        "name": "functionFour-dev-hello",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionMPp6FmgZz7YJ6dkvX8m0wreSPXJviaZe5kV018a9WQ"
+        "versionLogicalId": "HelloLambdaVersioniFnI8KQjQixohYAUuqZ43yv1S57dd4xRT0Csao3d8w"
       }
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
-      "service": "functionThree",
+      "service": "functionFour",
       "frameworkVersion": "3",
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
@@ -468,10 +468,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "C:\\Users\\aarushsharma\\Desktop\\AWS-Lambda\\aws-node-http-api-project\\.serverless\\functionThree.zip"
+    "artifact": "C:\\Users\\aarushsharma\\Desktop\\AWS-Lambda\\aws-node-http-api-project\\.serverless\\functionFour.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/functionThree/dev/1663828004756-2022-09-22T06:26:44.756Z",
-    "artifact": "functionThree.zip"
+    "artifactDirectoryName": "serverless/functionFour/dev/1663833089310-2022-09-22T07:51:29.310Z",
+    "artifact": "functionFour.zip"
   }
 }

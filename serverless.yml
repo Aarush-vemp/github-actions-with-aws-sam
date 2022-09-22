@@ -1,4 +1,4 @@
-service: functionThree
+service: functionFour
 frameworkVersion: '3'
 
 provider:

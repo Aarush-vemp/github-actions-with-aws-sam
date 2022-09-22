@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy: 
       matrix: 
-        node-version: [12.x]
+        node-version: [14.x]
         #  stages:
         #   - stage: 'dev'
         #     AWS_SECRET_ACCESS_KEY: 'AKIA36UHBMUYSYV537U6'
@@ -38,5 +38,5 @@ jobs:
           args: -c "serverless deploy"
           entryPoint: /bin/sh
         env: 
-          AWS_ACCESS_KEY_ID: 'AKIA36UHBMUYSYV537U6'
-          AWS_SECRET_ACCCESS_KEY: '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'
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
