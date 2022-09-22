@@ -1,45 +1,57 @@
+# on:
+#   push:
+#     branches: 
+#       - master
+# jobs: 
+#   build-deploy:
+#     runs-on: ubuntu-latest
+#     strategy: 
+#       matrix: 
+#         node-version: [14.x]
+       
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Use Node.js ${{matrix.node-version}}
+#         uses: actions/setup-node@v1
+#         with: 
+#           node-version : ${{matrix.node-version}}
+
+#       - name: serverless deploy
+#         uses: serverless/github-action@master
+#         with:
+#           args: deploy
+#         env: 
+#           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+#           AWS_SECRET_ACCCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+name: Deploy-MicroReporting-Dev
+
 on:
   push:
-    branches: 
+    branches:
       - master
-jobs: 
-  build-deploy:
+
+jobs:
+  deploy:
+    name: deploy
     runs-on: ubuntu-latest
-    strategy: 
-      matrix: 
-        node-version: [14.x]
-        #  stages:
-        #   - stage: 'dev'
-        #     AWS_SECRET_ACCESS_KEY: 'AKIA36UHBMUYSYV537U6'
-        #     AWS_ACCESS_KEY_ID: 'wpd15oOPQtVvFwsdLXFGtrnwu24KqHnn6k/MLXl+'
-        #   - stage: 'prod'
-        #     AWS_SECRET_ACCESS_KEY: 'AKIA36UHBMUYSYV537U6'
-        #     AWS_ACCESS_KEY_ID: 'AWS_ACCESS_KEY_ID_PROD'
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{matrix.node-version}}
-        uses: actions/setup-node@v1
-        with: 
-          node-version : ${{matrix.node-version}}
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with: 
-      #     aws-access-key-id: AKIA36UHBMUYRN3RQXPG
-      #     aws-secret-access-key: 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
-      #     aws-region: us-east-1
-      # - name: Install SLS Plugins and Deploy
-      #   uses: serverless/github-action@v1.53.0
-      #   with:
-      #     args: -c "npm install --also=dev && npm list -g && npm list && serverless deploy --stage=${{ matrix.stages.stage }} --verbose"
-      #     entrypoint: /bin/bash
-      - name: serverless deploy
-        uses: serverless/github-action@master
-        with:
-          args: deploy
-        # uses: serverless/github-action@master
-        # with: 
-        #   args: -c "serverless deploy"
-        #   entryPoint: /bin/sh
-        env: 
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: serverless deploy
+      uses: serverless/github-action@master
+      with:
+        args: deploy
+        entrypoint: /bin/sh
+      env:
+        # SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+        # or if using AWS credentials directly
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
