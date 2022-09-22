@@ -173,7 +173,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/functionThree/dev/1663792784389-2022-09-21T20:39:44.389Z/functionThree.zip"
+                "S3Key": "serverless/functionThree/dev/1663828004756-2022-09-22T06:26:44.756Z/functionThree.zip"
               },
               "Handler": "handler.hello",
               "Runtime": "nodejs14.x",
@@ -191,14 +191,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionxDmWZNclJxuPhQJ2iGznBOBLYHQkZOuvwcuXR9gNnmg": {
+          "HelloLambdaVersionMPp6FmgZz7YJ6dkvX8m0wreSPXJviaZe5kV018a9WQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "LoWi2/fxdBPxRZTIOGGYzQ60fldm2hZZPA5Pd54M1uY="
+              "CodeSha256": "sl6xMf6HPwb3nSwS5vo/gy/Fn8u+A1K5GXK/QNiFeSk="
             }
           },
           "HttpApi": {
@@ -305,7 +305,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionxDmWZNclJxuPhQJ2iGznBOBLYHQkZOuvwcuXR9gNnmg"
+              "Ref": "HelloLambdaVersionMPp6FmgZz7YJ6dkvX8m0wreSPXJviaZe5kV018a9WQ"
             },
             "Export": {
               "Name": "sls-functionThree-dev-HelloLambdaFunctionQualifiedArn"
@@ -451,7 +451,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionxDmWZNclJxuPhQJ2iGznBOBLYHQkZOuvwcuXR9gNnmg"
+        "versionLogicalId": "HelloLambdaVersionMPp6FmgZz7YJ6dkvX8m0wreSPXJviaZe5kV018a9WQ"
       }
     },
     "configValidationMode": "warn",
@@ -471,7 +471,7 @@
     "artifact": "C:\\Users\\aarushsharma\\Desktop\\AWS-Lambda\\aws-node-http-api-project\\.serverless\\functionThree.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/functionThree/dev/1663792784389-2022-09-21T20:39:44.389Z",
+    "artifactDirectoryName": "serverless/functionThree/dev/1663828004756-2022-09-22T06:26:44.756Z",
     "artifact": "functionThree.zip"
   }
 }

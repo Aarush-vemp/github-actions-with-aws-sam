@@ -8,6 +8,13 @@ jobs:
     strategy: 
       matrix: 
         node-version: [12.x]
+        #  stages:
+        #   - stage: 'dev'
+        #     AWS_SECRET_ACCESS_KEY: 'AKIA36UHBMUYSYV537U6'
+        #     AWS_ACCESS_KEY_ID: 'wpd15oOPQtVvFwsdLXFGtrnwu24KqHnn6k/MLXl+'
+        #   - stage: 'prod'
+        #     AWS_SECRET_ACCESS_KEY: 'AKIA36UHBMUYSYV537U6'
+        #     AWS_ACCESS_KEY_ID: 'AWS_ACCESS_KEY_ID_PROD'
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{matrix.node-version}}
@@ -20,11 +27,16 @@ jobs:
       #     aws-access-key-id: AKIA36UHBMUYRN3RQXPG
       #     aws-secret-access-key: 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
       #     aws-region: us-east-1
+      # - name: Install SLS Plugins and Deploy
+      #   uses: serverless/github-action@v1.53.0
+      #   with:
+      #     args: -c "npm install --also=dev && npm list -g && npm list && serverless deploy --stage=${{ matrix.stages.stage }} --verbose"
+      #     entrypoint: /bin/bash
       - name: serverless deploy
         uses: serverless/github-action@master
         with: 
           args: -c "serverless deploy"
           entryPoint: /bin/sh
         env: 
-          AWS_ACCESS_KEY_ID: AKIA36UHBMUYSYV537U6
-          AWS_SECRET_ACCCESS_KEY: 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
+          AWS_ACCESS_KEY_ID: 'AKIA36UHBMUYSYV537U6'
+          AWS_SECRET_ACCCESS_KEY: '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'
