@@ -34,9 +34,12 @@ jobs:
       #     entrypoint: /bin/bash
       - name: serverless deploy
         uses: serverless/github-action@master
-        with: 
-          args: -c "serverless deploy"
-          entryPoint: /bin/sh
+        with:
+          args: deploy
+        # uses: serverless/github-action@master
+        # with: 
+        #   args: -c "serverless deploy"
+        #   entryPoint: /bin/sh
         env: 
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
