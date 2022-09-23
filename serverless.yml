@@ -1,4 +1,4 @@
-service: rdsDB
+service: rdsDBTwo
 plugins: 
   - serverless-offline
 provider:

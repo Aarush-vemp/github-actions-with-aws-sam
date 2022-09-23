@@ -11,7 +11,7 @@ async function connectDB () {
     return {
         statusCode : 200,
         body : JSON.stringify({
-            message : "got the database connection"
+            message : "after secrets added to github actions secrets"
         }, null, 2)
     }
 }

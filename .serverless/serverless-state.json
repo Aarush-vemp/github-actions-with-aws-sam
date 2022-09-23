@@ -1,13 +1,14 @@
 {
   "service": {
-    "service": "rdsDB",
+    "service": "rdsDBTwo",
     "serviceObject": {
-      "name": "rdsDB"
+      "name": "rdsDBTwo"
     },
     "provider": {
       "name": "aws",
       "runtime": "nodejs14.x",
       "stage": "dev",
+      "timeout": 10,
       "region": "us-east-1",
       "versionFunctions": true,
       "compiledCloudFormationTemplate": {
@@ -86,7 +87,7 @@
           "HelloLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/rdsDB-dev-hello"
+              "LogGroupName": "/aws/lambda/rdsDBTwo-dev-hello"
             }
           },
           "IamRoleLambdaExecution": {
@@ -114,7 +115,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "rdsDB",
+                        "rdsDBTwo",
                         "dev",
                         "lambda"
                       ]
@@ -131,7 +132,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rdsDB-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rdsDBTwo-dev*:*"
                           }
                         ]
                       },
@@ -142,7 +143,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rdsDB-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rdsDBTwo-dev*:*:*"
                           }
                         ]
                       }
@@ -155,7 +156,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "rdsDB",
+                    "rdsDBTwo",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -173,13 +174,13 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/rdsDB/dev/1663936090145-2022-09-23T12:28:10.145Z/rdsDB.zip"
+                "S3Key": "serverless/rdsDBTwo/dev/1663965635251-2022-09-23T20:40:35.251Z/rdsDBTwo.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "rdsDB-dev-hello",
+              "FunctionName": "rdsDBTwo-dev-hello",
               "MemorySize": 1024,
-              "Timeout": 6,
+              "Timeout": 10,
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -191,20 +192,20 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionN97RFGWLNeWh3a0GmhMnrYEkXFOnz24kpspRpFS4g": {
+          "HelloLambdaVersionggBe51Q0YHWUn8ESrNrFe80MEptkq72jGvrBOMg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "rioyBJjm2i0xDmx6g/jxOAxfsIgP3iGrwn7a8MxNem0="
+              "CodeSha256": "AxmH+OM2es6yj51+TjS0UU97ioqW+i5FYrRFdpyLwaM="
             }
           },
           "HttpApi": {
             "Type": "AWS::ApiGatewayV2::Api",
             "Properties": {
-              "Name": "dev-rdsDB",
+              "Name": "dev-rdsDBTwo",
               "ProtocolType": "HTTP"
             }
           },
@@ -299,16 +300,16 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-rdsDB-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-rdsDBTwo-dev-ServerlessDeploymentBucketName"
             }
           },
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionN97RFGWLNeWh3a0GmhMnrYEkXFOnz24kpspRpFS4g"
+              "Ref": "HelloLambdaVersionggBe51Q0YHWUn8ESrNrFe80MEptkq72jGvrBOMg"
             },
             "Export": {
-              "Name": "sls-rdsDB-dev-HelloLambdaFunctionQualifiedArn"
+              "Name": "sls-rdsDBTwo-dev-HelloLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -317,7 +318,7 @@
               "Ref": "HttpApi"
             },
             "Export": {
-              "Name": "sls-rdsDB-dev-HttpApiId"
+              "Name": "sls-rdsDBTwo-dev-HttpApiId"
             }
           },
           "HttpApiUrl": {
@@ -342,7 +343,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-rdsDB-dev-HttpApiUrl"
+              "Name": "sls-rdsDBTwo-dev-HttpApiUrl"
             }
           }
         }
@@ -448,20 +449,19 @@
             "resolvedPath": "/"
           }
         ],
-        "name": "rdsDB-dev-hello",
+        "name": "rdsDBTwo-dev-hello",
         "package": {},
         "memory": 1024,
-        "timeout": 6,
+        "timeout": 10,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionN97RFGWLNeWh3a0GmhMnrYEkXFOnz24kpspRpFS4g"
+        "versionLogicalId": "HelloLambdaVersionggBe51Q0YHWUn8ESrNrFe80MEptkq72jGvrBOMg"
       }
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
-      "service": "rdsDB",
-      "frameworkVersion": "3",
+      "service": "rdsDBTwo",
       "plugins": {
         "$ref": "$[\"service\"][\"plugins\"]"
       },
@@ -474,10 +474,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "C:\\Users\\aarushsharma\\Desktop\\AWS-Lambda\\aws-node-http-api-project\\.serverless\\rdsDB.zip"
+    "artifact": "C:\\Users\\aarushsharma\\Desktop\\AWS-Lambda\\aws-node-http-api-project\\.serverless\\rdsDBTwo.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/rdsDB/dev/1663936090145-2022-09-23T12:28:10.145Z",
-    "artifact": "rdsDB.zip"
+    "artifactDirectoryName": "serverless/rdsDBTwo/dev/1663965635251-2022-09-23T20:40:35.251Z",
+    "artifact": "rdsDBTwo.zip"
   }
 }
