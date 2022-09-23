@@ -1,8 +1,8 @@
 {
   "service": {
-    "service": "functionSix",
+    "service": "rdsDB",
     "serviceObject": {
-      "name": "functionSix"
+      "name": "rdsDB"
     },
     "provider": {
       "name": "aws",
@@ -86,7 +86,7 @@
           "HelloLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/functionSix-dev-hello"
+              "LogGroupName": "/aws/lambda/rdsDB-dev-hello"
             }
           },
           "IamRoleLambdaExecution": {
@@ -114,7 +114,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "functionSix",
+                        "rdsDB",
                         "dev",
                         "lambda"
                       ]
@@ -131,7 +131,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/functionSix-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rdsDB-dev*:*"
                           }
                         ]
                       },
@@ -142,7 +142,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/functionSix-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rdsDB-dev*:*:*"
                           }
                         ]
                       }
@@ -155,7 +155,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "functionSix",
+                    "rdsDB",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -173,11 +173,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/functionSix/dev/1663843760199-2022-09-22T10:49:20.199Z/functionSix.zip"
+                "S3Key": "serverless/rdsDB/dev/1663936090145-2022-09-23T12:28:10.145Z/rdsDB.zip"
               },
-              "Handler": "handler.hello",
+              "Handler": "index.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "functionSix-dev-hello",
+              "FunctionName": "rdsDB-dev-hello",
               "MemorySize": 1024,
               "Timeout": 6,
               "Role": {
@@ -191,20 +191,20 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionxFRKYXmCq2JDVpFadzZsmF16Da6d0UPGQpy5FEnR4": {
+          "HelloLambdaVersionN97RFGWLNeWh3a0GmhMnrYEkXFOnz24kpspRpFS4g": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "cP6K6BE19RsVfR2uaRGBmHsK5u3Jww/fWwzmrQHJaKg="
+              "CodeSha256": "rioyBJjm2i0xDmx6g/jxOAxfsIgP3iGrwn7a8MxNem0="
             }
           },
           "HttpApi": {
             "Type": "AWS::ApiGatewayV2::Api",
             "Properties": {
-              "Name": "dev-functionSix",
+              "Name": "dev-rdsDB",
               "ProtocolType": "HTTP"
             }
           },
@@ -299,16 +299,16 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-functionSix-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-rdsDB-dev-ServerlessDeploymentBucketName"
             }
           },
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionxFRKYXmCq2JDVpFadzZsmF16Da6d0UPGQpy5FEnR4"
+              "Ref": "HelloLambdaVersionN97RFGWLNeWh3a0GmhMnrYEkXFOnz24kpspRpFS4g"
             },
             "Export": {
-              "Name": "sls-functionSix-dev-HelloLambdaFunctionQualifiedArn"
+              "Name": "sls-rdsDB-dev-HelloLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -317,7 +317,7 @@
               "Ref": "HttpApi"
             },
             "Export": {
-              "Name": "sls-functionSix-dev-HttpApiId"
+              "Name": "sls-rdsDB-dev-HttpApiId"
             }
           },
           "HttpApiUrl": {
@@ -342,7 +342,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-functionSix-dev-HttpApiUrl"
+              "Name": "sls-rdsDB-dev-HttpApiUrl"
             }
           }
         }
@@ -431,10 +431,13 @@
       },
       "vpc": {}
     },
+    "plugins": [
+      "serverless-offline"
+    ],
     "pluginsData": {},
     "functions": {
       "hello": {
-        "handler": "handler.hello",
+        "handler": "index.handler",
         "events": [
           {
             "httpApi": {
@@ -445,20 +448,23 @@
             "resolvedPath": "/"
           }
         ],
-        "name": "functionSix-dev-hello",
+        "name": "rdsDB-dev-hello",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionxFRKYXmCq2JDVpFadzZsmF16Da6d0UPGQpy5FEnR4"
+        "versionLogicalId": "HelloLambdaVersionN97RFGWLNeWh3a0GmhMnrYEkXFOnz24kpspRpFS4g"
       }
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
-      "service": "functionSix",
+      "service": "rdsDB",
       "frameworkVersion": "3",
+      "plugins": {
+        "$ref": "$[\"service\"][\"plugins\"]"
+      },
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
       },
@@ -468,10 +474,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "C:\\Users\\aarushsharma\\Desktop\\AWS-Lambda\\aws-node-http-api-project\\.serverless\\functionSix.zip"
+    "artifact": "C:\\Users\\aarushsharma\\Desktop\\AWS-Lambda\\aws-node-http-api-project\\.serverless\\rdsDB.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/functionSix/dev/1663843760199-2022-09-22T10:49:20.199Z",
-    "artifact": "functionSix.zip"
+    "artifactDirectoryName": "serverless/rdsDB/dev/1663936090145-2022-09-23T12:28:10.145Z",
+    "artifact": "rdsDB.zip"
   }
 }

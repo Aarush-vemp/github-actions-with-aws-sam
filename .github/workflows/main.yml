@@ -19,6 +19,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm install
     - name: serverless deploy
       uses: serverless/github-action@master
       with:
@@ -28,5 +29,5 @@ jobs:
         # AWS_SECRET_ACCESS_KEY: ${{secrets.dev.AWS_SECRET_ACCESS_KEY}}
         # SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         # or if using AWS credentials directly
-        AWS_ACCESS_KEY_ID: AKIA36UHBMUYXQZLQ35Z
-        AWS_SECRET_ACCESS_KEY: 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
+        AWS_ACCESS_KEY_ID: AKIA36UHBMUYUUUYLI5H
+        AWS_SECRET_ACCESS_KEY: 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

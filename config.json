@@ -1,0 +1,8 @@
+{
+    "DB_NAME" : "database_3_mysql",
+    "DB_USER": "admin",
+    "DB_PASS": "BlackstarL1!",
+    "RDS_HOST": "database-3-mysql.cus0ayawdv5s.us-east-1.rds.amazonaws.com",
+    "DIALECT": "mysql",
+    "PORT" : 3306
+}

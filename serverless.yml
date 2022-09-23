@@ -1,12 +1,15 @@
-service: functionSeven
-frameworkVersion: '3'
-
+service: rdsDB
+plugins: 
+  - serverless-offline
 provider:
   name: aws
   runtime: nodejs14.x
+  stage: dev
+  timeout: 10
+  region: us-east-1
 functions:
   hello:
-    handler: handler.hello
+    handler: index.handler
     events:
       - httpApi:
           path: /
